@@ -3,9 +3,8 @@ package ru.npy.billingtracker.account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import ru.npy.billingtracker.exceptions.AccountNotFoundException;
 
-import javax.security.auth.login.AccountNotFoundException;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -26,6 +25,6 @@ public class AccountController {
 
     @GetMapping("/{id}")
     public Account getAccount(@PathVariable UUID id) throws AccountNotFoundException {
-        return accountRepository.findById(id).orElseThrow(() -> new AccountNotFoundException(id.toString()));
+        return accountRepository.findById(id).orElseThrow(() -> new AccountNotFoundException(id));
     }
 }
