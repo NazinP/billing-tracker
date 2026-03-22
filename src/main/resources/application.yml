@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/accountdb
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update                    # В dev-среде: update (создаст/обновит таблицы)
+    show-sql: true                        # Показывать SQL в консоли (для отладки)
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true                  # Форматировать SQL для читаемости
+        jdbc:
+          batch_size: 20
